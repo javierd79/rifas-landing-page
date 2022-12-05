@@ -1,4 +1,5 @@
 import { createStyles, Overlay, Container, Title, Button, Text } from '@mantine/core'
+import { scrollById } from './scrollById'
 
 const useStyles = createStyles((theme) => ({
   hero: {
@@ -23,7 +24,7 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-end',
-    alignItems: 'flex-start',
+    alignItems: 'center',
     paddingBottom: theme.spacing.xl * 6,
     zIndex: 1,
     position: 'relative',
@@ -74,7 +75,7 @@ export function Hero () {
   const { classes } = useStyles()
 
   return (
-    <div className={classes.hero}>
+    <section className={classes.hero} id="home">
       <Overlay
         gradient='linear-gradient(180deg, rgba(0, 0, 0, 0.25) 0%, rgba(0, 0, 0, .65) 40%)'
         opacity={1}
@@ -85,14 +86,16 @@ export function Hero () {
       </video>
       <Container className={classes.container}>
         <Title className={classes.title}>El mejor lugar para ganar</Title>
-        <Text className={classes.description} size='xl' mt='xl'>
+        <Text className={classes.description} size='xl' mt='xl' ta="center">
           El mejor lugar para ganar dinero, con los mejores juegos y los mejores premios al mejor precio.
         </Text>
 
-        <Button variant='gradient' size='xl' radius='xl' className={classes.control}>
-          Saber más
+        <Button variant='white' color='dark' size='lg' mt="xl" onClick={
+          () => scrollById('premios')
+        }>
+          Saber mas
         </Button>
       </Container>
-    </div>
+    </section>
   )
 }
